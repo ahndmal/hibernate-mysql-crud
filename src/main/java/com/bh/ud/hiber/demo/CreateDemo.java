@@ -1,38 +1,39 @@
 package com.bh.ud.hiber.demo;
 
+import com.bh.ud.hiber.entity.Instructor;
+import com.bh.ud.hiber.entity.InstructorDetail;
 import com.bh.ud.hiber.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class DeleteStudentDemo {
+public class CreateDemo {
 
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Instructor.class)
+                .addAnnotatedClass(InstructorDetail.class)
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
 
         try {
 
-            int studentId = 1;
+            Instructor instructor = new Instructor("Chad", "Garry", "mail_34");
 
-            session = factory.getCurrentSession();
+            InstructorDetail instructorDetail = new InstructorDetail("channel_1", "sports");
+
+            instructor.setInstructorDetail(instructorDetail);
 
             session.beginTransaction();
 
-            Student myStudent = session.get(Student.class, studentId);
 
-//            session.delete(myStudent);
-
-            session.createQuery("delete from" + Student.class.getSimpleName() + "where id=2").executeUpdate();
 
             session.getTransaction().commit();
 
-            System.out.println("Deleted!");
+            System.out.println("Success!");
 
         } finally {
             factory.close();
