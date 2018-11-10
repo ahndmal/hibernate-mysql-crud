@@ -1,6 +1,7 @@
 package com.bh.ud.hiber.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "instructor")
@@ -14,7 +15,7 @@ public class Instructor {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "email")
@@ -24,6 +25,12 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
 
+    @OneToMany(fetch= FetchType.LAZY,
+            mappedBy = "instructor",
+            cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}
+    )
+    private List<Course> courses;
+
     public Instructor() {
 
     }
@@ -32,6 +39,14 @@ public class Instructor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public int getId() {

@@ -2,12 +2,13 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
-<!--suppress HibernateConfigDomFacetInspection -->
 <hibernate-configuration>
+
     <session-factory>
+
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hb-04-one-to-many-uni?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="connection.username">hbstudent</property>
         <property name="connection.password">hbstudent</property>
 
@@ -24,4 +25,5 @@
 		<property name="current_session_context_class">thread</property>
  
     </session-factory>
+
 </hibernate-configuration>

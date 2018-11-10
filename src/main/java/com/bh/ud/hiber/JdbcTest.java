@@ -10,6 +10,7 @@ public class JdbcTest {
         String jdbcUrl = "jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false";
         String user = "hbstudent";
         String pass = "hbstudent";
+
         try {
 
             System.out.println("connecting to DB");
@@ -17,6 +18,7 @@ public class JdbcTest {
             System.out.println("Connection successful");
 
         } catch(Exception e) {
+
             e.printStackTrace();
         }
     }
